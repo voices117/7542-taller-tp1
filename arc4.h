@@ -11,7 +11,10 @@
 #define ARC4_STATE_SIZE 256
 
 /** ARC4 internal buffer size. */
-#define ARC4_INTERNAL_BUFFER_SIZE 64
+#define ARC4_INTERNAL_BUFFER_SIZE 1024
+
+/** If not 0, prints the key-stream through STDERR */
+#define SHOW_DEBUG 1
 
 /** Types */
 

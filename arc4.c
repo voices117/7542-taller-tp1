@@ -1,6 +1,10 @@
 #include "arc4.h"
 #include <string.h>
 
+#if SHOW_DEBUG
+#include <stdio.h>
+#endif
+
 /**
  * Swaps 2 variables.
  *
@@ -31,6 +35,10 @@ static void _apply_key_stream(arc4_t *arc4, unsigned char *data,
     size_t sum = arc4->state[arc4->i] + arc4->state[arc4->j];
     size_t k = arc4->state[sum % ARC4_STATE_SIZE];
     data[i] = k ^ data[i];
+
+#if SHOW_DEBUG
+    fprintf(stderr, "%02X", (unsigned int)k);
+#endif
   }
 }
 
@@ -107,4 +115,5 @@ bool arc4_start(arc4_t *arc4) {
  *
  * \param arc4 An initialized ARC4 structure.
  */
-void arc4_destroy(arc4_t *arc4) { /* nothing to do */ }
+void arc4_destroy(arc4_t *arc4) { /* nothing to do */
+}
